@@ -7,6 +7,6 @@ namespace App\Http\Controllers;
 class CartController extends Controller
 {
     function cart(){
-        return "Panier";
+        return view('cart');
     }
 }

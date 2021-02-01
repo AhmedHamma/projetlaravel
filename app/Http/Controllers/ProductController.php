@@ -7,11 +7,11 @@ namespace App\Http\Controllers;
 class ProductController extends Controller
 {
     function product(){
-        return "Liste des produits";
+        return view('product-list');
     }
 
     function productId($id){
-        return "Fiche du produit {$id}";
+        return view('product-details', ['nom'=> $id]);
     }
 }
 
