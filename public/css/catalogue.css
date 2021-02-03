@@ -1,0 +1,67 @@
+.list-product{
+margin: 100px 0;
+}
+
+.item{
+    background-color: rgba(0, 0, 0, 0.04);
+    padding: 20px 10%;
+    margin: 20px 0;
+}
+
+.item-container{
+    padding: 0 50px;
+}
+
+.item-container > h2{
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    font-weight: 100;
+}
+
+.item-container > p {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+
+
+
+.flex-zone{
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 640px){
+    .item-container > p {
+        display: none;
+    }
+    .flex-zone {
+        flex-wrap: wrap;
+    }
+    button.btn-primary{
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+button.btn-primary {
+
+    background: #CE8282;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 50px;
+    padding: 8px 40px;
+    color: #FFF;
+    float: right;
+    text-transform: uppercase;
+}
+
+button.btn-primary:hover{
+    background:#b35e5e;
+    color: white;
+}
+
+.item-container > .note{
+    display: inline;
+}
+
