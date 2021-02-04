@@ -8,7 +8,9 @@ class ProductController extends Controller
 {
     function product()
     {
-        return view('product-list');
+        $products = DB::select('select * from products');
+        return view('product-list', ['product' => $products]);
+
     }
 
     function productId($id)
@@ -18,7 +20,6 @@ class ProductController extends Controller
     }
 }
 
-$products = DB::select('select * from products');
-return view('product-list', ['products' => $products]);
+
 
 
