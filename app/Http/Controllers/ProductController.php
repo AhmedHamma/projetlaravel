@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\DB;
+//use Illuminate\Support\Facades\DB;
 // use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -13,10 +15,10 @@ class ProductController extends Controller
 
     }
 
-    function productId($id)
+    public function productId($id)
     {
-        //'ahmed' => $username;
-        return view('product-details', ['nom' => $id]);
+        $product = DB::selectOne('select * from products where id=?',[$id]);
+        return view('product-details', ['id'=> $id,'product'=>$product]);
     }
 }
 
