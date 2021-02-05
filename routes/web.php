@@ -23,6 +23,5 @@ Route::get('/product/{id}',[ProductController::class,'productId']);
 Route::get('/cart',[\App\Http\Controllers\CartController::class,'cart']);
 
 Route::get('/productname',[ProductController::class,'product_list_sortByname']);
-
-// test
-// test2ee
+Route::get('/productprice',[ProductController::class,'product_list_sortByPrice']);
+Route::get('/productnameandprice/{id}',[ProductController::class,'product_list_OneProduct']);

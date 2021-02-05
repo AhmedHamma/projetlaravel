@@ -18,7 +18,7 @@
                 <h2>Lorem Ipsum</h2>
 
                 <?php
-                foreach ($product as $prod) { ?>
+                foreach ($products as $prod) { ?>
                 <h1> {{ $prod->name }} </h1>
                 {{ $prod->description }} <br>
                 {{ $prod->price }} €<br>

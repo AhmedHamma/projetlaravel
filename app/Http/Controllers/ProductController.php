@@ -13,7 +13,16 @@ class ProductController extends Controller
 {
     public function product_list_sortByname(){
         $products = Product::all()->sortBy('name');
-        return view('productname', ['products'=>$products]);
+        return view('product-list', ['products'=>$products]);
+    }
+    public function product_list_sortByPrice(){
+        //$products = DB::select('SELECT * FROM products');
+        $products = Product::all()->sortBy('price');
+        return view('product-list', ['products'=>$products]);
+    }
+    public function product_list_OneProduct($id){
+        $products = Product::all()->find($id);
+        return view('product-details', ['product'=>$products]);
     }
     function product()
     {

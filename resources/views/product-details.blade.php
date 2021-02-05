@@ -1,12 +1,14 @@
 <html>
 <body>
-<h1> {{ $product->name }} </h1>
-{{ $product->description }} <br>
-{{ $product->price }} €<br>
-<img src="{{ $product->picture }}" alt="{{ $product->name }}"/><br>
-<<<<<<< HEAD
+@if (isset($product))
+    <h1> {{ $product->name }} </h1>
+    {{ $product->description }} <br>
+    {{ $product->price }} €<br>
+    <img src="{{ $product->picture }}" alt="{{ $product->name }}"/><br>
 
-=======
->>>>>>> 8ed1eaf3a3b0e849dc3fed6ac76d2a13f50fd176
+@else
+  <p>t'es trop loin bg</p>
+@endif
+
 </body>
 </html>
