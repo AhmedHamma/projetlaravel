@@ -21,3 +21,4 @@ Route::get('/product/{id}',[ProductController::class,'productId']);
 
 
 Route::get('/cart',[\App\Http\Controllers\CartController::class,'cart']);
+// tests
