@@ -6,45 +6,152 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Product;
-
+use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
-
-    public function product()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        $products = DB::select('select * from products');
+        $products = Product::all();
+        return view('product-list', ['products' => $products]);
     }
-    public function product_list_sortByname(){
-        $products = Product::orderBy('name')->get();
-        return view('product-list', ['products'=>$products]);
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('backoffice.ajout');
     }
-    public function product_list_sortByPrice(){
-        //$products = DB::select('SELECT * FROM products');
-        $products = Product::all()->sortBy('price');
-        return view('product-list', ['products'=>$products]);
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $produit = new Product();
+        $produit->name = $request->name;
+        $produit->description = $request->description;
+        $produit->price = $request->price;
+        $produit->picture = $request->image;
+        $produit->weight = $request->weight;
+        $produit->quantity = $request->quantity;
+        $produit->available = $available=1;
+        $produit->category_id = $category_id=1;
+        $produit->save();
+
+        return redirect('product/'.$produit->id);
     }
-    public function product_list_OneProduct($id){
-        $products = Product::all()->find($id);
-        return view('product-details', ['product'=>$products]);
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $product = Product::find($id);
+        return view('product-details', ['product' => $product]);
+//        on retourne la vue d'un produit en particulier grace a l'id
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $product = Product::find($id);
+        return view('backoffice.modif', ['product' => $product]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $produit = Product::find($id);
+        $produit->name = $request->name;
+        $produit->description = $request->description;
+        $produit->price = $request->price;
+        $produit->picture = $request->image;
+        $produit->weight = $request->weight;
+        $produit->quantity = $request->quantity;
+        $produit->save();
+
+        return redirect('product/' . $produit->id);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        Product::destroy($id);
+        return redirect('product');
+    }
+
+}
 //    public function product()
 //    {
 //        $products = DB::select('select * from products');
-//
-//
-//        return view('product-list', ['product' => $products]);
-//
 //    }
+//    public function product_list_sortByname(){
+//        $products = Product::orderBy('name')->get();
+//        return view('product-list', ['products'=>$products]);
+//    }
+//    public function product_list_sortByPrice(){
+//        //$products = DB::select('SELECT * FROM products');
+//        $products = Product::all()->sortBy('price');
+//        return view('product-list', ['products'=>$products]);
+//    }
+//    public function product_list_OneProduct($id){
+//        $products = Product::all()->find($id);
+//        return view('product-details', ['product'=>$products]);
+//    }
+////    public function product()
+////    {
+////        $products = DB::select('select * from products');
+////
+////
+////        return view('product-list', ['product' => $products]);
+////
+////    }
+//
+//    public function productId($id)
+//    {
+//        $product = DB::selectOne('select * from products where id=?',[$id]);
+//        return view('product-details', ['id'=> $id,'product'=>$product]);
+//    }
+//
 
-    public function productId($id)
-    {
-        $product = DB::selectOne('select * from products where id=?',[$id]);
-        return view('product-details', ['id'=> $id,'product'=>$product]);
-    }
-}
+
+
+
+
 
 
 
