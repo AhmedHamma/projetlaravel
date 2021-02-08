@@ -14,14 +14,6 @@
 <body>
 <h1>back office</h1>
 <p>bvn bg</p>
-@foreach ($products as $product)
-    <br>
-    <h2> {{ $product->name }} </h2>
-    <h2> {{ $product->price }} €</h2>
-    <a href="/backoffice/product/modif/{{ $product->id }}"><button class="btn btn-primary">Modifier</button></a>
-    <a href="/backoffice/product/suppr/{{ $product->id }}"><button class="btn btn-primary">Supprimer</button></a>
-    <br>
-@endforeach
 <p><a href="/backoffice/ajout">aller vers la page d'<strong>ajout</strong></a></p>
 <p><a href="/backoffice/modif">aller vers la page de <strong> modification</strong></a></p>
 <p><a href="/backoffice/suppr">aller vers la page de <strong> suppression</strong></a></p>
