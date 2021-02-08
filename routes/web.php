@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\BackofficeController;
+use App\Http\Controllers\backoffice\AddController;
+use App\Http\Controllers\backoffice\ModifController;
+use App\Http\Controllers\backoffice\SupprController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +25,11 @@ Route::get('/product/{id}',[ProductController::class,'productId']);
 
 
 Route::get('/cart',[\App\Http\Controllers\CartController::class,'cart']);
+
+Route::get('/backoffice',[BackofficeController::class, 'index']);
+Route::get('/backoffice/ajout', [ProductController::class, 'create']);
+Route::post('/backoffice/result',[ProductController::class, 'store']);
+
+Route::get('/backoffice/modif/{id}', [ProductController::class, 'edit']);
+Route::put('/backoffice/modif/{id}', [ProductController::class, 'update']);
+Route::delete('/backoffice/suppr/{id}', [ProductController::class, 'destroy']);
