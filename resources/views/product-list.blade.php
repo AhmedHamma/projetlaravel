@@ -17,17 +17,19 @@
             <div class="item-container">
                 <h2>Lorem Ipsum</h2>
 
-                <?php
-<<<<<<< HEAD
-                foreach ($product as $prod) { ?>
-=======
-                foreach ($products as $prod) { ?>
->>>>>>> 35004dc2fc05199db0afc248176383a58844b8f2
-                <h1> {{ $prod->name }} </h1>
-                {{ $prod->description }} <br>
-                {{ $prod->price }} €<br>
-                <img class="img-article" src="{{ $prod->picture }}" alt="{{ $prod->name }}"/><br>
-                <?php };    ?>
+{{--                @php()--}}
+
+{{--                --}}{{-- content --}}
+{{--                @foreach ($product as $prod)--}}
+{{--                    <br>--}}
+{{--                    <h2> {{ $prod->name }} </h2>--}}
+{{--                    <h2> {{ $prod->price }} €</h2>--}}
+{{--                    <a href="/backoffice/product/modify/{{ $prod->id }}"><button class="btn btn-primary">Modifier</button></a>--}}
+{{--                    <a href="/backoffice/product/delete/{{ $prod->id }}"><button class="btn btn-primary">Supprimer</button></a>--}}
+{{--                    <br>--}}
+{{--                @endforeach--}}
+{{--@endphp--}}
+
                 <div class="note">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>

@@ -23,7 +23,7 @@ use \App\Http\Controllers\ProductController;
 Route::get('/',[\App\Http\Controllers\HomeController::class,'index']);
 
 Route::get('/product',[ProductController::class,'product']);
-//Route::get('/product/{id}',[ProductController::class,'productId']);
+Route::get('/product/{id}',[ProductController::class,'productId']);
 
 
 Route::get('/cart',[\App\Http\Controllers\CartController::class,'cart']);
