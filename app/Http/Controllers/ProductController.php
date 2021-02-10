@@ -46,6 +46,9 @@ class ProductController extends Controller
             'price' => 'required|gte:1',
             'quantity' => 'required|min:1',
             'picture' => 'required',
+            'weight' => 'required|min:1',
+            'description' => 'required|min:5',
+
         ]);
         $produit = new Product();
         $produit->name = $request->name;
