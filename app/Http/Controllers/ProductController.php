@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 //use Illuminate\Support\Facades\DB;
 // use Illuminate\Http\Request;
 
-
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -19,8 +19,9 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $categories = Category::all();
         $products = Product::all();
-        return view('product-list', ['products' => $products]);
+        return view('product-list', ['products' => $products, 'categories' => $categories]);
     }
 
     /**
@@ -73,10 +74,15 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
-        return view('product-details', ['product' => $product]);
+
 //        on retourne la vue d'un produit en particulier grace a l'id
+        if ($product = Product::find($id)) {
+            return view('product-details', ['product' => $product]);
+        } else {
+            abort(404);
+        }
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -86,9 +92,11 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::find($id);
+        if ($product = Product::find($id)){
         return view('backoffice.modif', ['product' => $product]);
-    }
+    }else{
+        abort(404);
+    }}
 
     /**
      * Update the specified resource in storage.

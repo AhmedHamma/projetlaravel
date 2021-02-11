@@ -29,7 +29,24 @@
 {{--                    <br>--}}
 {{--                @endforeach--}}
 {{--@endphp--}}
-
+{{--                <h1> liste des produits </h1>--}}
+{{--                @foreach ($products as $prod)--}}
+{{--                    <p>{{$prod->name}}--}}
+{{--                        @if($prod->category)--}}
+{{--                            qui est un produit {{$prod->category->name}}</p>--}}
+{{--                    @endif--}}
+{{--                    <p><img height="180" src="{{$prod->picture}}" alt="img"></p>--}}
+{{--                    <p>{{$prod->price}}€</p>--}}
+{{--                @endforeach--}}
+                @foreach($categories as $category)
+                    @if($category->products)
+                        <h1>dans la catégorie {{$category->name}} nous avons :</h1>
+                        @foreach($category->products as $prod)
+                            <p>{{$prod->name}}</p>
+                            <p><img height="180" src="{{$prod->picture}}" alt="image"> pour {{$prod->price}} €</p>
+                        @endforeach
+                    @endif
+                @endforeach
                 <div class="note">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
