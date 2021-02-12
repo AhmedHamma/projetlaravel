@@ -46,7 +46,7 @@ class ProductController extends Controller
             'name' => 'required',
             'price' => 'required|gte:1',
             'quantity' => 'required|min:1',
-            'picture' => 'required',
+//            'picture' => 'required',
             'weight' => 'required|min:1',
             'description' => 'required|min:5',
 
@@ -58,11 +58,11 @@ class ProductController extends Controller
         $produit->picture = $request->image;
         $produit->weight = $request->weight;
         $produit->quantity = $request->quantity;
-        $produit->available = $available=1;
-        $produit->category_id = $category_id=1;
+        $produit->available = $available = 1;
+        $produit->category_id = $category_id = 1;
         $produit->save();
 
-        return redirect('product/'.$produit->id);
+        return redirect('product');
     }
 
 
@@ -83,6 +83,11 @@ class ProductController extends Controller
         }
     }
 
+    public function suppr()
+    {
+        $product = Product::all();
+        return view('backoffice.suppr', ['product' => $product]);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -92,11 +97,12 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        if ($product = Product::find($id)){
-        return view('backoffice.modif', ['product' => $product]);
-    }else{
-        abort(404);
-    }}
+        if ($product = Product::find($id)) {
+            return view('backoffice.modif', ['product' => $product]);
+        } else {
+            abort(404);
+        }
+    }
 
     /**
      * Update the specified resource in storage.
@@ -115,8 +121,8 @@ class ProductController extends Controller
         $produit->weight = $request->weight;
         $produit->quantity = $request->quantity;
         $produit->save();
-
-        return redirect('product/' . $produit->id);
+                dd($request);
+        return redirect('product' );
     }
 
     /**
@@ -125,10 +131,12 @@ class ProductController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        Product::destroy($id);
-        return redirect('product');
+        $product = Product::destroy($id);
+
+//        return view('backoffice', ['product' => $product]);
+        return redirect('/backoffice');
     }
 
 }

@@ -44,4 +44,5 @@ Route::post('/backoffice/result',[ProductController::class, 'store']);
 
 Route::get('/backoffice/modif/{id}', [ProductController::class, 'edit']);
 Route::put('/backoffice/modif/{id}', [ProductController::class, 'update']);
-Route::delete('/backoffice/suppr/{id}', [ProductController::class, 'destroy']);
+Route::delete('/backoffice/suppr/{id}', [ProductController::class, 'delete']);
+Route::get('/backoffice/suppr', [ProductController::class, 'suppr']);
